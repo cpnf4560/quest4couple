@@ -1,0 +1,6 @@
+<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+  <!-- Versão simplificada para ICO -->
+  <circle cx="8" cy="8" r="7" fill="#d63384"/>  <path d="M8 12.5L4.5 9C3.8 8.3 3.8 7 4.5 6.3C5.2 5.6 6.5 5.6 8 7.2C9.5 5.6 10.8 5.6 11.5 6.3C12.2 7 12.2 8.3 11.5 9L8 12.5Z" 
+        fill="#fff"/>
+  <circle cx="8" cy="8" r="7" fill="none" stroke="#fff" stroke-width="0.5"/>
+</svg>

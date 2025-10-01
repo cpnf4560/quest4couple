@@ -46,25 +46,50 @@
         ctx.strokeStyle = '#ffffff';
         ctx.lineWidth = size > 32 ? 2 : 1;
         ctx.stroke();
-        
-        // Coração
+          // Coração melhorado
         ctx.fillStyle = '#ffffff';
-        const heartSize = size * 0.4;
+        const heartSize = size * 0.35;
         const heartX = center;
-        const heartY = center + size * 0.1;
+        const heartY = center + size * 0.05;
         
         ctx.beginPath();
-        // Desenhar coração simplificado
+        // Coração mais bem proporcionado
         const h = heartSize;
-        const w = h * 0.8;
-        ctx.moveTo(heartX, heartY + h * 0.3);
+        const w = h * 0.9;
         
-        // Lado esquerdo
-        ctx.bezierCurveTo(heartX - w/2, heartY - h/3, heartX - w, heartY + h/6, heartX, heartY + h/2);
-        // Lado direito
-        ctx.bezierCurveTo(heartX + w, heartY + h/6, heartX + w/2, heartY - h/3, heartX, heartY + h * 0.3);
+        // Ponto inferior do coração
+        ctx.moveTo(heartX, heartY + h * 0.7);
+        
+        // Curva esquerda (lóbulo esquerdo)
+        ctx.bezierCurveTo(
+            heartX - w * 0.5, heartY + h * 0.4,  // ponto de controle 1
+            heartX - w * 0.7, heartY - h * 0.1,  // ponto de controle 2
+            heartX - w * 0.25, heartY - h * 0.3  // ponto final
+        );
+        
+        // Topo esquerdo
+        ctx.bezierCurveTo(
+            heartX - w * 0.1, heartY - h * 0.5,  // ponto de controle 1
+            heartX + w * 0.1, heartY - h * 0.5,  // ponto de controle 2
+            heartX + w * 0.25, heartY - h * 0.3  // ponto final
+        );
+        
+        // Curva direita (lóbulo direito)
+        ctx.bezierCurveTo(
+            heartX + w * 0.7, heartY - h * 0.1,  // ponto de controle 1
+            heartX + w * 0.5, heartY + h * 0.4,  // ponto de controle 2
+            heartX, heartY + h * 0.7             // ponto final (fecha o caminho)
+        );
         
         ctx.fill();
+        
+        // Brilho sutil no coração
+        if (size >= 32) {
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+            ctx.beginPath();
+            ctx.ellipse(heartX - w * 0.15, heartY - h * 0.1, w * 0.12, h * 0.08, -Math.PI/6, 0, 2 * Math.PI);
+            ctx.fill();
+        }
         
         // Texto Q4C (apenas para tamanhos maiores)
         if (size >= 32) {
