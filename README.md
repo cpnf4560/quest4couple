@@ -1,6 +1,6 @@
 # 💕 Quest4Couple - Sistema de Compatibilidade Íntima
 
-![Quest4Couple Logo](logo.png)
+![Quest4Couple Logo](./logo.png)
 
 *Descubram-se juntos* 💕
 

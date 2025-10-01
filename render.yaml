@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: quest4couple
+    env: static
+    buildCommand: echo "Building Quest4Couple... Assets ready!"
+    staticPublishPath: .
+    headers:
+      - path: /*
+        headers:
+          Cache-Control: public, max-age=86400
+      - path: /logo.*
+        headers:
+          Cache-Control: public, max-age=31536000
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html

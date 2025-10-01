@@ -1,0 +1,8 @@
+# Redirect rules for Render
+/*    /index.html   200
+
+# Direct access to the main systems
+/couple   /Quest4couple1.2.html   200
+/individual   /Quest4you1.2.html   200
+/casal   /Quest4couple1.2.html   200
+/solo   /Quest4you1.2.html   200
