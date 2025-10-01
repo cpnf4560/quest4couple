@@ -1,6 +1,9 @@
 # Redirect rules for Render
 /*    /index.html   200
 
+# Legacy URL redirect (old filename)
+/QuizzIndividualv1.0.html   /Quest4you1.2.html   301
+
 # Direct access to the main systems
 /couple   /Quest4couple1.2.html   200
 /individual   /Quest4you1.2.html   200
