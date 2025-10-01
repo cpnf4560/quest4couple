@@ -82,6 +82,21 @@ Quest4Couple/
 3. **Ver resultado** - Obter interpretação automática
 4. **Exportar relatório** - Guardar análise individual
 
+## 🚀 Deploy e Hospedagem
+
+### 🌐 **URLs Disponíveis:**
+- **🏠 Homepage:** https://quest4couple.onrender.com
+- **💕 Sistema Casais:** https://quest4couple.onrender.com/Quest4couple1.2.html
+- **👤 Sistema Individual:** https://quest4couple.onrender.com/Quest4you1.2.html
+
+### 📱 **Atalhos Diretos:**
+- **Casais:** https://quest4couple.onrender.com/couple
+- **Individual:** https://quest4couple.onrender.com/individual
+
+### 🔧 **Deploy Automático:**
+- **Render:** Conectado ao repositório GitHub para builds automáticos
+- **GitHub Pages:** Backup disponível em https://cpnf4560.github.io/quest4couple
+
 ## 🔒 Segurança e Privacidade
 
 - **Encriptação local** - Todos os dados são encriptados no browser
