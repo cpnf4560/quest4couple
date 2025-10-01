@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Assets - Quest4Couple</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .test-item { margin: 20px 0; padding: 10px; border: 1px solid #ccc; }
+        img { max-width: 200px; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test Assets - Quest4Couple</h1>
+    
+    <div class="test-item">
+        <h3>Logo PNG (caminho relativo)</h3>
+        <img src="./logo.png" alt="Logo PNG" onerror="this.nextElementSibling.innerHTML='❌ Falhou'">
+        <div>✅ Carregou</div>
+    </div>
+    
+    <div class="test-item">
+        <h3>Logo JPG (fallback)</h3>
+        <img src="./logo.jpg" alt="Logo JPG" onerror="this.nextElementSibling.innerHTML='❌ Falhou'">
+        <div>✅ Carregou</div>
+    </div>
+    
+    <div class="test-item">
+        <h3>Logo PNG (caminho absoluto)</h3>
+        <img src="/logo.png" alt="Logo PNG absoluto" onerror="this.nextElementSibling.innerHTML='❌ Falhou'">
+        <div>✅ Carregou</div>
+    </div>
+    
+    <div class="test-item">
+        <h3>Informações do ambiente</h3>
+        <p><strong>URL atual:</strong> <span id="currentUrl"></span></p>
+        <p><strong>Base URL:</strong> <span id="baseUrl"></span></p>
+    </div>
+    
+    <script>
+        document.getElementById('currentUrl').textContent = window.location.href;
+        document.getElementById('baseUrl').textContent = window.location.origin;
+    </script>
+    
+    <div class="test-item">
+        <h3>Links de navegação</h3>
+        <p><a href="./index.html">← Voltar ao início</a></p>
+        <p><a href="./Quest4couple1.2.html">💕 Sistema Casais</a></p>
+        <p><a href="./Quest4you1.2.html">👤 Sistema Individual</a></p>
+    </div>
+</body>
+</html>

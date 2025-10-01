@@ -232,41 +232,37 @@ h1 { margin: 10px 0 15px 0; font-size: 24px; }
     <h1>Quest4Couple</h1>
     <p class="tagline">Descubram-se juntos 💕</p>
   </div>
-  
-  <div class="user-section">
-    <label for="userName">👤 Seu Nome:</label>
-    <input type="text" id="userName" placeholder="Digite seu nome..." style="margin: 0 10px; padding: 5px; border-radius: 3px; border: 1px solid #ccc;">
+    <div class="user-section">
+    <label for="userName">👤 O Vosso Nome:</label>
+    <input type="text" id="userName" placeholder="Introduzam o vosso nome..." style="margin: 0 10px; padding: 5px; border-radius: 3px; border: 1px solid #ccc;">
   </div>
-  
-  <div class="controls">
-    <button class="btn" onclick="toggleAllPacks()">Expandir/Colapsar Todos</button>
+    <div class="controls">
+    <button class="btn" onclick="toggleAllPacks()">Expandir/Recolher Todos</button>
     <button class="btn" onclick="saveAnswers()">💾 Guardar Respostas Encriptadas</button>
     <button class="btn" onclick="showCompareSection()">🔀 Comparar com Parceiro/a</button>
     <button class="btn btn-secondary" onclick="generatePDF()">📄 Gerar PDF</button>
-    <button class="btn btn-secondary" onclick="sendByEmail()">📧 Enviar por Email</button>
-  </div>
-    <div id="compareSection" style="display: none; margin: 15px 0; padding: 15px; background: #e9ecef; border-radius: 8px;">
+    <button class="btn btn-secondary" onclick="sendByEmail()">📧 Enviar por E-mail</button>
+  </div>    <div id="compareSection" style="display: none; margin: 15px 0; padding: 15px; background: #e9ecef; border-radius: 8px;">
     <h3>🔍 Comparar Respostas do Casal</h3>
     <div style="margin: 10px 0;">
-      <label>📁 Carregar SEU arquivo .q4c:</label>
+      <label>📁 Carregar o VOSSO ficheiro .q4c:</label>
       <input type="file" id="myFile" accept=".q4c" style="margin-left: 10px;">
-    </div>
-    <div style="margin: 10px 0;">
-      <label>📁 Carregar arquivo .q4c do/a parceiro/a:</label>
+    </div>    <div style="margin: 10px 0;">
+      <label>📁 Carregar ficheiro .q4c do/a parceiro/a:</label>
       <input type="file" id="partnerFile" accept=".q4c" style="margin-left: 10px;">
     </div>
     <div style="margin: 10px 0;">
       <label>🔑 Código de segurança:</label>
-      <input type="password" id="securityCode" placeholder="Digite o código usado..." style="margin-left: 10px; padding: 5px; border-radius: 3px; border: 1px solid #ccc;">
+      <input type="password" id="securityCode" placeholder="Introduzam o código utilizado..." style="margin-left: 10px; padding: 5px; border-radius: 3px; border: 1px solid #ccc;">
     </div>
     <button class="btn" onclick="compareEncryptedAnswers()">🎯 Gerar Relatório de Compatibilidade</button>
     
     <div style="margin-top: 15px; padding: 10px; background: #fff3cd; border-radius: 5px; font-size: 11px;">
       💡 <strong>Como funciona:</strong><br>
-      1. Cada pessoa responde no seu PC e gera um arquivo .q4c<br>
-      2. Partilham os arquivos entre si (email, WhatsApp, etc.)<br>
-      3. Qualquer um pode carregar ambos os arquivos aqui e ver o relatório<br>
-      4. Usem o mesmo código de segurança que definiram ao guardar
+      1. Cada pessoa responde no seu PC e gera um ficheiro .q4c<br>
+      2. Partilham os ficheiros entre si (e-mail, WhatsApp, etc.)<br>
+      3. Qualquer um pode carregar ambos os ficheiros aqui e ver o relatório<br>
+      4. Utilizem o mesmo código de segurança que definiram ao guardar
     </div>
   </div>
   

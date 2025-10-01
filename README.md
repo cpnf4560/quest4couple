@@ -6,7 +6,7 @@
 
 ## 📋 Sobre o Projeto
 
-O **Quest4Couple** é uma aplicação web interativa projetada para casais explorarem sua compatibilidade íntima de forma privada e segura. O sistema oferece questionários temáticos que geram relatórios de compatibilidade personalizados, com encriptação completa para garantir a privacidade das respostas.
+O **Quest4Couple** é uma aplicação web interactiva projectada para casais explorarem a sua compatibilidade íntima de forma privada e segura. O sistema oferece questionários temáticos que geram relatórios de compatibilidade personalizados, com encriptação completa para garantir a privacidade das respostas.
 
 ## ✨ Funcionalidades Principais
 
@@ -71,13 +71,13 @@ Quest4Couple/
 
 ### Para Casais:
 1. **Responder individualmente** - Cada pessoa responde no seu dispositivo
-2. **Guardar encriptado** - Gerar arquivo .q4c com código de segurança
-3. **Partilhar arquivos** - Trocar arquivos via email/WhatsApp
-4. **Comparar resultados** - Carregar ambos os arquivos para análise
+2. **Guardar encriptado** - Gerar ficheiro .q4c com código de segurança
+3. **Partilhar ficheiros** - Trocar ficheiros via e-mail/WhatsApp
+4. **Comparar resultados** - Carregar ambos os ficheiros para análise
 5. **Ver relatório** - Receber análise detalhada de compatibilidade
 
 ### Para Análise Individual:
-1. **Selecionar categorias** - Escolher áreas de interesse
+1. **Seleccionar categorias** - Escolher áreas de interesse
 2. **Responder escala 0-5** - Avaliar cada questão numericamente
 3. **Ver resultado** - Obter interpretação automática
 4. **Exportar relatório** - Guardar análise individual
@@ -99,10 +99,10 @@ Quest4Couple/
 
 ## 🔒 Segurança e Privacidade
 
-- **Encriptação local** - Todos os dados são encriptados no browser
+- **Encriptação local** - Todos os dados são encriptados no navegador
 - **Sem armazenamento** - Nenhum dado é enviado para servidores
-- **Código personalizado** - Cada casal define sua própria chave
-- **Formato proprietário** - Arquivos .q4c protegidos por encriptação
+- **Código personalizado** - Cada casal define a sua própria chave
+- **Formato proprietário** - Ficheiros .q4c protegidos por encriptação
 
 ## 💻 Tecnologias Utilizadas
 
