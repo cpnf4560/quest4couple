@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Favicon Base64 Generator</title>
+</head>
+<body>
+    <h2>Gerando favicon ICO em base64...</h2>
+    <canvas id="favicon" width="16" height="16" style="border: 1px solid #ccc; image-rendering: pixelated; width: 64px; height: 64px;"></canvas>
+    <br><br>
+    <div id="result"></div>
+    
+    <script>
+        // Criar favicon 16x16 pixel perfect
+        const canvas = document.getElementById('favicon');
+        const ctx = canvas.getContext('2d');
+        
+        // Limpar
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, 16, 16);
+        
+        // Fundo circular teal
+        ctx.fillStyle = '#26c6da';
+        ctx.beginPath();
+        ctx.arc(8, 8, 7, 0, 2 * Math.PI);
+        ctx.fill();
+        
+        // Círculo interior rosa
+        ctx.fillStyle = '#d63384';
+        ctx.beginPath();
+        ctx.arc(8, 8, 5, 0, 2 * Math.PI);
+        ctx.fill();
+        
+        // Coração branco simples (3x3 pixels no centro)
+        ctx.fillStyle = '#ffffff';
+        // Dois círculos pequenos para o topo do coração
+        ctx.fillRect(6, 7, 1, 1);
+        ctx.fillRect(8, 7, 1, 1);
+        // Base do coração
+        ctx.fillRect(7, 8, 1, 1);
+        ctx.fillRect(6, 9, 3, 1);
+        ctx.fillRect(7, 10, 1, 1);
+        
+        // Converter para base64
+        const dataUrl = canvas.toDataURL('image/png');
+        
+        document.getElementById('result').innerHTML = `
+            <h3>Favicon gerado:</h3>
+            <p><strong>Data URL:</strong></p>
+            <textarea rows="3" cols="80">${dataUrl}</textarea>
+            <br><br>
+            <a href="${dataUrl}" download="favicon-16x16.png">Download PNG 16x16</a>
+            <br><br>
+            <p><strong>Para usar imediatamente, adicione isto ao &lt;head&gt;:</strong></p>
+            <textarea rows="2" cols="80"><link rel="icon" href="${dataUrl}" type="image/png"></textarea>
+        `;
+    </script>
+</body>
+</html>

@@ -276,10 +276,10 @@ h1 { margin: 10px 0 15px 0; font-size: 24px; }
 </div>
 
 <script>
-function createQuestion(name, text) {
+function createQuestion(name, text, questionNumber) {
   return `<div class='question'>
     <div class='question-content'>
-      <div class='question-text'>${text}</div>
+      <div class='question-text'><strong>${questionNumber}.</strong> ${text}</div>
       <textarea placeholder='Comentários (opcional)'></textarea>
     </div>
     <div class='question-options'>
@@ -306,7 +306,8 @@ function createQuestion(name, text) {
 // Função createOptionsHeader removida - agora usamos labels individuais
 
 function createPack(className, title, questions) {
-  let questionsHtml = questions.map((q,i) => createQuestion(className+i, q)).join('');
+  let packNumber = getPackNumber(className);
+  let questionsHtml = questions.map((q,i) => createQuestion(className+i, q, `${packNumber}.${i + 1}`)).join('');
   document.write(`
     <div class='pack ${className}'>
       <div class='pack-header' onclick='togglePack("${className}")'>
@@ -317,6 +318,11 @@ function createPack(className, title, questions) {
       </div>
     </div>
   `);
+}
+
+function getPackNumber(className) {
+  const packOrder = ['romantico', 'experiencia', 'pimentinha', 'atrevimento', 'subdom', 'kinks', 'poliamor'];
+  return packOrder.indexOf(className) + 1;
 }
 
 function togglePack(packId) {
