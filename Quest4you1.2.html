@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Sexy Question Packs - Completo</title>
+<style>
+body { 
+  font-family: Arial, sans-serif; 
+  margin: 8px; 
+  background: 
+    radial-gradient(circle at 15% 25%, rgba(214, 51, 132, 0.35) 0%, transparent 35%),
+    radial-gradient(circle at 85% 75%, rgba(111, 66, 193, 0.30) 0%, transparent 35%),
+    radial-gradient(circle at 50% 10%, rgba(38, 198, 218, 0.20) 0%, transparent 35%),
+    radial-gradient(circle at 20% 70%, rgba(232, 62, 140, 0.15) 0%, transparent 30%),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 15px,
+      rgba(255, 255, 255, 0.08) 15px,
+      rgba(255, 255, 255, 0.08) 17px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 30px,
+      rgba(214, 51, 132, 0.03) 30px,
+      rgba(214, 51, 132, 0.03) 32px
+    ),
+    linear-gradient(135deg, #e8ecf0 0%, #d1d9e0 100%);
+  font-size: 16px; 
+  min-height: 100vh; 
+}
+.header { 
+  text-align: center; 
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 0;
+  right: 0;
+  height: 250px;
+  background: 
+    radial-gradient(circle at 50% 50%, rgba(214, 51, 132, 0.4) 2px, transparent 2px),
+    radial-gradient(circle at 25% 25%, rgba(111, 66, 193, 0.3) 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, rgba(38, 198, 218, 0.25) 1.5px, transparent 1.5px);
+  background-size: 40px 40px, 20px 20px, 60px 60px;
+  opacity: 0.7;
+  z-index: -1;
+  pointer-events: none;
+}
+.logo-section { margin-bottom: 25px; }
+.logo { 
+  width: 120px; 
+  height: 120px; 
+  margin-bottom: 10px;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+}
+.logo-section h1 { 
+  margin: 10px 0 5px 0; 
+  font-size: 28px; 
+  color: #d63384;
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.tagline { 
+  margin: 0; 
+  font-size: 16px; 
+  color: #6f42c1; 
+  font-style: italic;
+}
+.user-section { margin: 20px 0; }
+.user-section label { font-weight: bold; font-size: 16px; color: #495057; }
+.user-section input { font-size: 16px; padding: 8px; }
+.controls { display: flex; gap: 8px; justify-content: center; margin-bottom: 25px; flex-wrap: wrap; }
+.compatibility-section { margin: 20px 0; padding: 20px; border-radius: 10px; }
+.super-match { background-color: #d4edda; border-left: 5px solid #28a745; }
+.match { background-color: #d1ecf1; border-left: 5px solid #17a2b8; }
+.maybe { background-color: #fff3cd; border-left: 5px solid #ffc107; }
+.special { background-color: #f8d7da; border-left: 5px solid #dc3545; }
+.btn { background: linear-gradient(135deg, #d63384, #e83e8c); color: white; border: none; padding: 12px 16px; border-radius: 8px; cursor: pointer; font-size: 14px; touch-action: manipulation; box-shadow: 0 2px 4px rgba(214, 51, 132, 0.3); transition: all 0.3s ease; }
+.btn:hover { background: linear-gradient(135deg, #b02a5b, #d63384); transform: translateY(-1px); box-shadow: 0 4px 8px rgba(214, 51, 132, 0.4); }
+.btn-secondary { background: linear-gradient(135deg, #6f42c1, #8e5cc7); }
+.btn-secondary:hover { background: linear-gradient(135deg, #5a2d91, #6f42c1); transform: translateY(-1px); }
+
+.pack { 
+  margin-bottom: 20px; 
+  border-radius: 10px; 
+  color: white; 
+  overflow: hidden; 
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15), 0 1px 3px rgba(0,0,0,0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.pack-header { padding: 15px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; }
+.pack-header h2 { margin: 0; font-size: 18px; flex: 1; }
+.toggle-icon { font-size: 16px; margin-left: 15px; transition: transform 0.3s; }
+.pack-content { max-height: none; overflow: visible; transition: max-height 0.3s ease-out; }
+.pack-content.collapsed { max-height: 0; overflow: hidden; }
+.vanilla { background: linear-gradient(135deg, #ff6b9d, #e83e8c); }
+.orientacao { background: linear-gradient(135deg, #a17fe0, #6f42c1); }
+.cuckold { background: linear-gradient(135deg, #ff4081, #d63384); }
+.swing { background: linear-gradient(135deg, #26c6da, #00acc1); }
+.kinks { background: linear-gradient(135deg, #c62828, #ad1457); }
+
+.question { 
+  margin: 5px 15px; 
+  padding: 12px; 
+  background-color: rgba(255,255,255,0.2); 
+  border-radius: 8px; 
+  display: flex; 
+  align-items: flex-start; 
+  gap: 15px; 
+  min-height: auto;
+}
+
+.question-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.question-text { 
+  font-weight: 500; 
+  line-height: 1.3; 
+  font-size: 15px; 
+  margin: 0;
+}
+
+.question-options { 
+  display: flex; 
+  justify-content: space-around; 
+  align-items: center; 
+  min-width: 250px; 
+  flex-shrink: 0;
+  padding: 0 5px;
+}
+
+/* Estilo das opções individuais */
+.option-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.option-label {
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 2px;
+}
+
+.question-options input[type="radio"] { 
+  width: 20px; 
+  height: 20px; 
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.comments textarea { 
+  width: 100%; 
+  height: 35px; 
+  padding: 8px; 
+  border-radius: 5px; 
+  border: 1px solid #ccc; 
+  resize: vertical; 
+  font-size: 14px; 
+  min-height: 35px;
+  font-family: inherit;
+}
+
+h1 { margin: 10px 0 15px 0; font-size: 24px; }
+.collapsed .toggle-icon { transform: rotate(-90deg); }
+
+.pack-actions {
+  margin: 20px 15px 10px 15px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.pack-result {
+  margin: 15px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  color: #333;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.pack-result h3 {
+  margin: 0 0 15px 0;
+  color: #d63384;
+  font-size: 18px;
+}
+
+.pack-result .score {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.pack-result .interpretation {
+  margin: 15px 0;
+  line-height: 1.5;
+}
+
+.pack-result .level {
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: bold;
+  display: inline-block;
+  margin: 5px 0;
+}
+
+.level-baixo { background: #d1ecf1; color: #0c5460; }
+.level-moderado { background: #fff3cd; color: #856404; }
+.level-alto { background: #f8d7da; color: #721c24; }
+.level-muito-alto { background: #d4edda; color: #155724; }
+
+/* Responsividade Mobile */
+@media (max-width: 768px) {
+  body { margin: 5px; font-size: 16px; }
+  .logo { width: 80px; height: 80px; }
+  .logo-section h1 { font-size: 22px; }
+  .tagline { font-size: 14px; }
+  .controls { gap: 5px; }
+  .btn { padding: 10px 12px; font-size: 13px; }
+  
+  .question { margin: 5px 10px; padding: 10px; }
+  .question-text { font-size: 14px; }
+  
+  .option-label { 
+    font-size: 11px;
+  }
+  
+  .question-options input[type="radio"] { 
+    width: 18px; 
+    height: 18px; 
+  }
+  
+  .pack-header { padding: 12px 15px; }
+  .pack-header h2 { font-size: 16px; }
+}
+
+@media (max-width: 480px) {
+  .question {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .question-options {
+    justify-content: space-between;
+    margin: 8px 0;
+    padding: 0 5px;
+    min-width: auto;
+    gap: 2px;
+  }
+  
+  .option-item {
+    gap: 2px;
+  }
+  
+  .option-label {
+    font-size: 10px;
+  }
+  
+  .pack-actions {
+    flex-direction: column;
+  }
+}
+
+@media print {
+  .controls { display: none; }
+  .pack { page-break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="logo-section">
+    <img src="logo.png" alt="Quest4Couple Logo" class="logo">
+    <h1>Quest4Couple</h1>
+    <p class="tagline">Descubram-se juntos 💕</p>
+  </div>
+  
+  <div class="user-section">
+    <label for="userName">👤 Seu Nome:</label>
+    <input type="text" id="userName" placeholder="Digite seu nome..." style="margin: 0 10px; padding: 5px; border-radius: 3px; border: 1px solid #ccc;">
+  </div>
+  
+  <div class="controls">
+    <button class="btn" onclick="toggleAllPacks()">Expandir/Colapsar Todos</button>
+    <button class="btn" onclick="saveAnswers()">💾 Guardar Respostas Encriptadas</button>
+    <button class="btn" onclick="showCompareSection()">🔀 Comparar com Parceiro/a</button>
+    <button class="btn btn-secondary" onclick="generatePDF()">📄 Gerar PDF</button>
+    <button class="btn btn-secondary" onclick="sendByEmail()">📧 Enviar por Email</button>
+  </div>
+    <div id="compareSection" style="display: none; margin: 15px 0; padding: 15px; background: #e9ecef; border-radius: 8px;">
+    <h3>🔍 Comparar Respostas do Casal</h3>
+    <div style="margin: 10px 0;">
+      <label>📁 Carregar SEU arquivo .q4c:</label>
+      <input type="file" id="myFile" accept=".q4c" style="margin-left: 10px;">
+    </div>
+    <div style="margin: 10px 0;">
+      <label>📁 Carregar arquivo .q4c do/a parceiro/a:</label>
+      <input type="file" id="partnerFile" accept=".q4c" style="margin-left: 10px;">
+    </div>
+    <div style="margin: 10px 0;">
+      <label>🔑 Código de segurança:</label>
+      <input type="password" id="securityCode" placeholder="Digite o código usado..." style="margin-left: 10px; padding: 5px; border-radius: 3px; border: 1px solid #ccc;">
+    </div>
+    <button class="btn" onclick="compareEncryptedAnswers()">🎯 Gerar Relatório de Compatibilidade</button>
+    
+    <div style="margin-top: 15px; padding: 10px; background: #fff3cd; border-radius: 5px; font-size: 11px;">
+      💡 <strong>Como funciona:</strong><br>
+      1. Cada pessoa responde no seu PC e gera um arquivo .q4c<br>
+      2. Partilham os arquivos entre si (email, WhatsApp, etc.)<br>
+      3. Qualquer um pode carregar ambos os arquivos aqui e ver o relatório<br>
+      4. Usem o mesmo código de segurança que definiram ao guardar
+    </div>
+  </div>
+  
+  <div id="compatibilityReport" style="display: none;"></div>
+</div>
+
+<script>
+function createQuestion(name, text) {
+  return `<div class='question'>
+    <div class='question-content'>
+      <div class='question-text'>${text}</div>
+      <textarea placeholder='Comentários (opcional)'></textarea>
+    </div>
+    <div class='question-options'>
+      <div class='option-item'>
+        <div class='option-label'>0</div>
+        <input type='radio' name='${name}' value='0'>
+      </div>
+      <div class='option-item'>
+        <div class='option-label'>1</div>
+        <input type='radio' name='${name}' value='1'>
+      </div>
+      <div class='option-item'>
+        <div class='option-label'>2</div>
+        <input type='radio' name='${name}' value='2'>
+      </div>
+      <div class='option-item'>
+        <div class='option-label'>3</div>
+        <input type='radio' name='${name}' value='3'>
+      </div>
+      <div class='option-item'>
+        <div class='option-label'>4</div>
+        <input type='radio' name='${name}' value='4'>
+      </div>
+      <div class='option-item'>
+        <div class='option-label'>5</div>
+        <input type='radio' name='${name}' value='5'>
+      </div>
+    </div>
+  </div>`;
+}
+
+// Função createOptionsHeader removida - agora usamos labels individuais
+
+function createPack(className, title, questions) {
+  let questionsHtml = questions.map((q,i) => createQuestion(className+i, q)).join('');
+  document.write(`
+    <div class='pack ${className}'>
+      <div class='pack-header' onclick='togglePack("${className}")'>
+        <h2>${title}</h2>
+        <span class='toggle-icon'>▼</span>
+      </div>
+      <div class='pack-content' id='${className}-content'>
+        ${questionsHtml}
+        <div class='pack-actions'>
+          <button class='btn pack-result-btn' onclick='calculatePackResult("${className}")'>📊 Ver Resultado</button>
+          <button class='btn btn-secondary pack-export-btn' onclick='exportPackResult("${className}")' style='display:none;'>📄 Exportar Resultado</button>
+        </div>
+        <div class='pack-result' id='result-${className}' style='display:none;'></div>
+      </div>
+    </div>
+  `);
+}
+
+function togglePack(packId) {
+  const content = document.getElementById(packId + '-content');
+  const header = content.previousElementSibling;
+  const icon = header.querySelector('.toggle-icon');
+  
+  content.classList.toggle('collapsed');
+  header.classList.toggle('collapsed');
+}
+
+function toggleAllPacks() {
+  const allContents = document.querySelectorAll('.pack-content');
+  const isAnyExpanded = Array.from(allContents).some(content => !content.classList.contains('collapsed'));
+  
+  allContents.forEach(content => {
+    const header = content.previousElementSibling;
+    if (isAnyExpanded) {
+      content.classList.add('collapsed');
+      header.classList.add('collapsed');
+    } else {
+      content.classList.remove('collapsed');
+      header.classList.remove('collapsed');
+    }
+  });
+}
+
+function generatePDF() {
+  window.print();
+}
+
+function printForm() {
+  window.print();
+}
+
+function sendByEmail() {
+  const results = collectFormData();
+  const subject = encodeURIComponent('Sexy Question Packs - Respostas');
+  const body = encodeURIComponent(`Olá!\n\nAqui estão as minhas respostas ao questionário:\n\n${results}\n\nBeijos! 💕`);
+  window.open(`mailto:?subject=${subject}&body=${body}`);
+}
+
+function collectFormData() {
+  let results = '';
+  const packs = document.querySelectorAll('.pack');
+  
+  packs.forEach(pack => {
+    const title = pack.querySelector('h2').textContent;
+    results += `\n=== ${title} ===\n\n`;
+    
+    const questions = pack.querySelectorAll('.question');
+    questions.forEach((question, index) => {
+      const text = question.querySelector('.question-text').textContent;
+      const selectedRadio = question.querySelector('input[type="radio"]:checked');
+      const comment = question.querySelector('textarea').value;
+      
+      if (selectedRadio || comment) {
+        results += `${index + 1}. ${text}\n`;
+        if (selectedRadio) {
+          results += `   Resposta: ${getAnswerText(selectedRadio.value)}\n`;
+        }
+        if (comment) {
+          results += `   Comentário: ${comment}\n`;
+        }
+        results += '\n';
+      }
+    });
+  });
+  
+  return results;
+}
+
+function getAnswerText(value) {
+  const answers = {
+    '0': 'Nada (0)',
+    '1': 'Muito Pouco (1)',
+    '2': 'Pouco (2)', 
+    '3': 'Moderado (3)',
+    '4': 'Muito (4)',
+    '5': 'Extremamente (5)'
+  };
+  return answers[value] || value;
+}
+
+let packs = {
+  vanilla: ["Prefiro sexo lento e romântico.", "Gosto de experimentar novas posições sexuais.", "Fantasiei em fazer bondage leve.", "Gosto de ser dominado/a.", "Gosto de dominar o/a parceiro/a.", "Fantasiei em spanking leve.", "Prefiro sexo sem brincadeiras sexuais avançadas.", "Gosto de usar lingerie sensual.", "Fantasiei em roleplay (professor/aluno, médico/paciente…).", "Gosto de sexo ao som de música suave.", "Prefiro preliminares longas.", "Fantasiei em submissão consensual.", "Gosto de explorar óleos ou massagens eróticas.", "Fantasiei em ser humilhado/a de forma leve.", "Gosto de sexo rápido e espontâneo.", "Prefiro sexo apenas com toque físico, sem fetiches.", "Fantasiei em voyeurismo ou exibicionismo discreto.", "Gosto de experimentar brinquedos sexuais.", "Fantasiei em ser apenas objeto de prazer.", "Prefiro relações sexuais monótonas e previsíveis.", "Fantasiei em experimentar vendas ou privação sensorial.", "Gosto de sexo em locais diferentes da casa.", "Fantasiei em cuckold ou cuckquean.", "Prefiro sexo apenas com conexão emocional forte.", "Fantasiei em experiências BDSM moderadas."],
+
+  orientacao: ["Sinto atração por homens.", "Sinto atração por mulheres.", "Sinto atração por pessoas não-binárias.", "Já fantaseei com alguém do mesmo sexo.", "Já fantaseei com alguém de género diferente.", "Atraio-me a pessoas de vários géneros.", "Gosto de experiências a três com géneros diferentes.", "Fantasiei em experimentar sexo com mais de duas pessoas.", "Tenho curiosidade sobre pansexualidade.", "Sinto atração por travestys ou crossdressers.", "Já tive experiências sexuais com pessoas do mesmo sexo.", "Prefiro relações heterossexuais.", "Fantasiei em beijo triplo ou ménage.", "Tenho atração por casais.", "Sinto atração sexual por pessoas mais velhas.", "Sinto atração sexual por pessoas mais novas.", "Já explorei fetiches com múltiplos géneros.", "Sinto-me confortável com relacionamentos não-monogâmicos.", "Fantasiei em participar em orgias privadas.", "Gosto de sexo anal independentemente do género.", "Fantasiei em voyeurismo com diferentes géneros.", "Sinto atração por pessoas trans.", "Já participei em swing ou troca de casais.", "Tenho atração por interracial/BBC.", "Sinto-me atraído/a sexualmente por pessoas do meu género."],
+
+  cuckold: ["Fantasiei em ver o/a meu/minha parceiro/a com outra pessoa.", "Fico excitado/a com humilhação consensual.", "Gosto de submissão sexual.", "Fantasiei em ser traído/a consensualmente.", "Tenho curiosidade sobre cuckold.", "Já participei em roleplay cuckold.", "Gosto de voyeurismo sobre o/a parceiro/a.", "Fantasiei em ser humilhado/a por outro/a.", "Aprecio dominância do/a parceiro/a sobre mim.", "Fantasiei em sexo a três com o/a meu/minha parceiro/a e outro/a.", "Gosto de submissão verbal.", "Fantasiei em orgasmo proibido.", "Tenho curiosidade sobre cuckquean.", "Fantasiei em controle total do/a parceiro/a.", "Aprecio pequenas provocações sexuais externas.", "Fantasiei em humilhação física leve.", "Gosto de submissão psicológica.", "Fantasiei em dar prazer a outra pessoa enquanto observo.", "Aceito ser desafiado/a sexualmente pelo/a parceiro/a.", "Fantasiei em situações de limitação de escolha sexual.", "Curto a ideia de ser apenas objeto sexual por momentos.", "Fantasiei em gravar cenas de cuckold consensual.", "Aceito pequenas regras de submissão na intimidade.", "Fantasiei em experimentar edge play dentro do consentimento.", "Tenho interesse em dinâmicas de poder com o/a parceiro/a."],
+
+  swing: ["Fantasiei em sexo a três.", "Gostaria de participar num swing discreto.", "Já imaginei ver o/a meu/minha parceiro/a com outra pessoa.", "Tenho curiosidade sobre orgias privadas.", "Fantasiei em experiências poliamorosas no estrangeiro.", "Gostaria de parceiros sexuais múltiplos com regras claras.", "Aceito compartilhar o/a parceiro/a com consentimento.", "Fantasiei em triângulos amorosos duradouros.", "Curto a ideia de swing com amigos.", "Fantasiei em inversão de papéis em grupo.", "Gosto de festas privadas com foco em sexo consensual.", "Aceito ser observador/a durante sexo a três.", "Fantasiei em sexo interracial com parceiros diferentes.", "Tenho curiosidade em criar rede poliamorosa.", "Fantasiei em sexo planeado com outra pessoa.", "Aceito regras de exclusividade sexual parcial.", "Fantasiei em compartilhar encontros com outros casais.", "Curto a ideia de orgias privadas com regras.", "Fantasiei em parceiros fixos apenas para sexo.", "Tenho interesse em swing em locais privados.", "Fantasiei em sexo em grupo com consentimento total.", "Curto voyeurismo controlado em grupo.", "Fantasiei em ver o/a parceiro/a receber prazer de outro/a.", "Aceito experimentar novos géneros de parceiros.", "Fantasiei em encontros secretos discretos."],
+
+  kinks: ["Fantasiei em shibari (cordas japonesas).", "Tenho fetiche por pés.", "Gosto de latex ou couro na intimidade.", "Fantasiei em spanking pesado.", "Curto wax play (cera quente).", "Fantasiei em electro play leve.", "Tenho curiosidade sobre needle play (agulhas).", "Fantasiei em roleplay de uniformes.", "Gosto de foot worship.", "Fantasiei em humilhação erótica.", "Curto pegging (mulher com strap-on).", "Fantasiei em bondage extremo leve.", "Tenho fetiche por máscaras.", "Fantasiei em trampling (ser pisado/a).", "Curto sensory deprivation (privação sensorial).", "Fantasiei em medical fetish.", "Tenho curiosidade sobre pet play (animal submisso).", "Fantasiei em objectificação.", "Curto CBT (tortura genital consensual).", "Fantasiei em submissão total.", "Tenho interesse em dominatrix.", "Fantasiei em cenas de voyeurismo controlado.", "Curto spanking com propósito de prazer.", "Fantasiei em submissão prolongada.", "Tenho interesse em edge play consensual."]
+};
+
+// Funções para calcular e exportar resultados dos packs
+function calculatePackResult(packClass) {
+  const packElement = document.querySelector(`.${packClass}`);
+  const questions = packElement.querySelectorAll('.question');
+  const title = packElement.querySelector('h2').textContent;
+  
+  let total = 0;
+  let answered = 0;
+  
+  questions.forEach(question => {
+    const selected = question.querySelector('input[type="radio"]:checked');
+    if (selected) {
+      total += parseInt(selected.value);
+      answered++;
+    }
+  });
+  
+  if (answered === 0) {
+    alert('Por favor, responda pelo menos a algumas perguntas antes de ver o resultado!');
+    return;
+  }
+  
+  const percentage = Math.round((total / (answered * 5)) * 100);
+  const interpretation = getInterpretation(packClass, percentage);
+  
+  const resultDiv = document.getElementById(`result-${packClass}`);
+  resultDiv.innerHTML = `
+    <h3>📊 Resultado: ${title}</h3>
+    <div class="score">
+      ${percentage}% 
+      <span class="level ${interpretation.levelClass}">${interpretation.level}</span>
+    </div>
+    <div class="interpretation">
+      <strong>Interpretação:</strong><br>
+      ${interpretation.text}
+    </div>
+    <div style="margin-top: 15px; font-size: 14px; color: #666;">
+      <strong>Estatísticas:</strong> ${answered} de ${questions.length} perguntas respondidas | Pontuação: ${total}/${answered * 5}
+    </div>
+  `;
+  
+  resultDiv.style.display = 'block';
+  document.querySelector(`.${packClass} .pack-export-btn`).style.display = 'inline-block';
+  
+  // Scroll suave para o resultado
+  resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function getInterpretation(packClass, percentage) {
+  const interpretations = {
+    vanilla: {
+      0: { level: 'Muito Kink', levelClass: 'level-muito-alto', text: 'Tens uma forte preferência por experiências BDSM e kinks. O sexo "vanilla" tradicional pode não ser suficientemente estimulante para ti.' },
+      25: { level: 'Kink', levelClass: 'level-alto', text: 'Gostas de experiências mais intensas e não convencionais. Tens interesse significativo em práticas BDSM e kinks.' },
+      50: { level: 'Equilibrado', levelClass: 'level-moderado', text: 'Tens um equilíbrio entre preferências vanilla e kink. Gostas tanto de intimidade romântica quanto de experiências mais ousadas.' },
+      75: { level: 'Vanilla', levelClass: 'level-baixo', text: 'Preferes intimidade romântica e conexão emocional. O sexo suave e carinhoso é mais atrativo para ti do que práticas intensas.' },
+      100: { level: 'Muito Vanilla', levelClass: 'level-baixo', text: 'Tens uma forte preferência por intimidade romântica e suave. Práticas BDSM ou kinks não te atraem.' }
+    },
+    orientacao: {
+      0: { level: 'Heterossexual', levelClass: 'level-baixo', text: 'Sentes atração principalmente por pessoas do género oposto. Tens pouca curiosidade sobre experiências com outros géneros.' },
+      25: { level: 'Heteroflexível', levelClass: 'level-moderado', text: 'Principalmente heterossexual, mas com alguma curiosidade ou abertura para experiências com o mesmo género.' },
+      50: { level: 'Bissexual', levelClass: 'level-alto', text: 'Sentes atração por múltiplos géneros. Tens interesse tanto em homens quanto em mulheres.' },
+      75: { level: 'Pansexual', levelClass: 'level-muito-alto', text: 'Sentes atração por pessoas independentemente do género. Estás aberto/a a diversas identidades de género.' },
+      100: { level: 'Explorador/a', levelClass: 'level-muito-alto', text: 'Tens grande curiosidade e abertura para explorar atração e experiências com diversos géneros e identidades.' }
+    },
+    cuckold: {
+      0: { level: 'Sem Interesse', levelClass: 'level-baixo', text: 'Não tens interesse em cuckold/cuckquean. Preferes exclusividade e não gostas de partilhar o/a parceiro/a.' },
+      25: { level: 'Curiosidade Leve', levelClass: 'level-moderado', text: 'Tens alguma curiosidade sobre cuckold, mas ainda não é um interesse forte. Podes fantasiar ocasionalmente.' },
+      50: { level: 'Interesse Moderado', levelClass: 'level-alto', text: 'Tens interesse significativo em cuckold/cuckquean. A ideia de ver ou ser visto/a com outros é excitante.' },
+      75: { level: 'Alto Interesse', levelClass: 'level-muito-alto', text: 'Tens forte interesse em dinâmicas cuckold. A humilhação consensual e voyeurismo são muito atraentes para ti.' },
+      100: { level: 'Muito Alto', levelClass: 'level-muito-alto', text: 'Cuckold/cuckquean é uma fantasia central para ti. Tens forte desejo de experimentar ou já praticas estas dinâmicas.' }
+    },
+    swing: {
+      0: { level: 'Monógamo/a', levelClass: 'level-baixo', text: 'Preferes relacionamentos exclusivos. Não tens interesse em partilhar experiências íntimas com outros casais.' },
+      25: { level: 'Curioso/a', levelClass: 'level-moderado', text: 'Tens alguma curiosidade sobre swing ou poliamor, mas ainda não é uma prioridade forte.' },
+      50: { level: 'Interessado/a', levelClass: 'level-alto', text: 'Tens interesse significativo em experiências com múltiplos parceiros. Swing ou poliamor são atraentes para ti.' },
+      75: { level: 'Muito Interessado/a', levelClass: 'level-muito-alto', text: 'Tens forte desejo de experiências poliamorosas. A ideia de múltiplos parceiros é muito excitante.' },
+      100: { level: 'Poliamoroso/a', levelClass: 'level-muito-alto', text: 'Poliamor e swing são centrais nas tuas fantasias. Relacionamentos não-monogâmicos são ideais para ti.' }
+    },
+    kinks: {
+      0: { level: 'Vanilla', levelClass: 'level-baixo', text: 'Não tens interesse em kinks ou fetiches. Preferes sexo tradicional sem práticas alternativas.' },
+      25: { level: 'Explorador/a Iniciante', levelClass: 'level-moderado', text: 'Tens alguma curiosidade sobre kinks, mas ainda és cauteloso/a. Podes estar disposto/a a experimentar coisas leves.' },
+      50: { level: 'Kinky Moderado/a', levelClass: 'level-alto', text: 'Tens interesse significativo em vários kinks e fetiches. Gostas de experimentar práticas alternativas.' },
+      75: { level: 'Muito Kinky', levelClass: 'level-muito-alto', text: 'Tens forte interesse em múltiplos kinks e fetiches. Práticas BDSM são muito atraentes para ti.' },
+      100: { level: 'Extremamente Kinky', levelClass: 'level-muito-alto', text: 'Kinks e fetiches são centrais na tua sexualidade. Tens interesse em práticas avançadas e diversificadas.' }
+    }
+  };
+  
+  const packInterpretations = interpretations[packClass];
+  
+  // Encontrar a interpretação mais próxima
+  if (percentage <= 10) return packInterpretations[0];
+  if (percentage <= 35) return packInterpretations[25];
+  if (percentage <= 65) return packInterpretations[50];
+  if (percentage <= 85) return packInterpretations[75];
+  return packInterpretations[100];
+}
+
+function exportPackResult(packClass) {
+  const packElement = document.querySelector(`.${packClass}`);
+  const title = packElement.querySelector('h2').textContent;
+  const resultDiv = document.getElementById(`result-${packClass}`);
+  
+  if (!resultDiv || resultDiv.style.display === 'none') {
+    alert('Por favor, calcule o resultado primeiro!');
+    return;
+  }
+  
+  const userName = document.getElementById('userName').value.trim() || 'Usuário';
+  const resultText = resultDiv.textContent;
+  
+  const exportContent = `
+=== QUEST4COUPLE - RESULTADO INDIVIDUAL ===
+
+👤 Nome: ${userName}
+📅 Data: ${new Date().toLocaleDateString('pt-PT')}
+📊 Categoria: ${title}
+
+${resultText}
+
+---
+Gerado pelo Quest4Couple
+Descubram-se juntos 💕
+  `.trim();
+  
+  const blob = new Blob([exportContent], { type: 'text/plain;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `quest4couple_${packClass}_${userName.toLowerCase().replace(/\s+/g, '_')}.txt`;
+  a.click();
+  URL.revokeObjectURL(url);
+  
+  alert(`✅ Resultado de "${title}" exportado com sucesso!`);
+}
+
+for (let key in packs) {
+  let titles = {vanilla:'💕 Vanilla ou Kink', orientacao:'🏳️‍🌈 Orientação Sexual', cuckold:'👀 Nível Stag/Cuckold', swing:'💞 Swing/Poliamor', kinks:'🎭 Fetiches & Kinks'};
+  createPack(key, titles[key], packs[key]);
+}
+
+// Funcionalidades para casal
+function saveAnswers() {
+  const userName = document.getElementById('userName').value.trim();
+  if (!userName) {
+    alert('Por favor, digite seu nome primeiro!');
+    return;
+  }
+  
+  const answers = collectAnswersData();
+  if (Object.keys(answers).length === 0) {
+    alert('Responda pelo menos a algumas perguntas antes de guardar!');
+    return;
+  }
+  
+  // Pedir código de segurança
+  const securityCode = prompt(`🔐 Digite um código de segurança que vocês dois conhecem:\n(Ex: data de nascimento, nome de animal, etc.)\n\nEste código será usado para desencriptar as respostas.`);
+  
+  if (!securityCode || securityCode.trim().length < 3) {
+    alert('❌ Código deve ter pelo menos 3 caracteres!');
+    return;
+  }
+  
+  const data = {
+    name: userName,
+    timestamp: new Date().toISOString(),
+    answers: answers,
+    totalQuestions: Object.keys(answers).length
+  };
+  
+  // Encriptar os dados
+  const encryptedData = encryptData(JSON.stringify(data), securityCode.trim());
+  
+  const blob = new Blob([encryptedData], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `quest4couple_${userName.toLowerCase().replace(/\s+/g, '_')}.q4c`;
+  a.click();
+  URL.revokeObjectURL(url);
+  
+  alert(`✅ Arquivo encriptado de ${userName} guardado com sucesso!\n\n🔒 Extensão: .q4c (Quest4Couple)\n💾 Partilhe este arquivo com seu/sua parceiro/a\n🔑 Não esqueça o código de segurança: "${securityCode}"`);
+}
+
+function collectAnswersData() {
+  const answers = {};
+  const questions = document.querySelectorAll('.question');
+  
+  questions.forEach(question => {
+    const selectedRadio = question.querySelector('input[type="radio"]:checked');
+    const comment = question.querySelector('textarea').value;
+    const text = question.querySelector('.question-text').textContent;
+    
+    if (selectedRadio) {
+      answers[text] = {
+        response: selectedRadio.value,
+        comment: comment || ''
+      };
+    }
+  });
+  
+  return answers;
+}
+
+function showCompareSection() {
+  const section = document.getElementById('compareSection');
+  section.style.display = section.style.display === 'none' ? 'block' : 'none';
+}
+
+// Função de encriptação simples
+function encryptData(text, key) {
+  let result = '';
+  for (let i = 0; i < text.length; i++) {
+    const charCode = text.charCodeAt(i) ^ key.charCodeAt(i % key.length);
+    result += String.fromCharCode(charCode);
+  }
+  return btoa(result); // Base64 encode
+}
+
+// Função de desencriptação
+function decryptData(encryptedText, key) {
+  try {
+    const decoded = atob(encryptedText); // Base64 decode
+    let result = '';
+    for (let i = 0; i < decoded.length; i++) {
+      const charCode = decoded.charCodeAt(i) ^ key.charCodeAt(i % key.length);
+      result += String.fromCharCode(charCode);
+    }
+    return result;
+  } catch (error) {
+    throw new Error('Erro na desencriptação');
+  }
+}
+
+function compareEncryptedAnswers() {
+  const myFileInput = document.getElementById('myFile');
+  const partnerFileInput = document.getElementById('partnerFile');
+  const securityCode = document.getElementById('securityCode').value.trim();
+  
+  if (!myFileInput.files[0]) {
+    alert('📁 Selecione SEU arquivo .q4c!');
+    return;
+  }
+  
+  if (!partnerFileInput.files[0]) {
+    alert('📁 Selecione o arquivo .q4c do/a seu/sua parceiro/a!');
+    return;
+  }
+  
+  if (!securityCode) {
+    alert('🔑 Digite o código de segurança!');
+    return;
+  }
+  
+  // Ler primeiro arquivo (seu)
+  const reader1 = new FileReader();
+  reader1.onload = function(e1) {
+    // Ler segundo arquivo (parceiro/a)
+    const reader2 = new FileReader();
+    reader2.onload = function(e2) {
+      try {
+        // Desencriptar ambos os arquivos
+        const myDecrypted = decryptData(e1.target.result, securityCode);
+        const partnerDecrypted = decryptData(e2.target.result, securityCode);
+        
+        const myData = JSON.parse(myDecrypted);
+        const partnerData = JSON.parse(partnerDecrypted);
+        
+        generateCompatibilityReport(myData.name, myData.answers, partnerData.name, partnerData.answers);
+        
+      } catch (error) {
+        alert('❌ Erro ao desencriptar os arquivos!\n\n' +
+              'Possíveis causas:\n' +
+              '• Código de segurança incorreto\n' +
+              '• Arquivos corrompidos\n' +
+              '• Arquivos não são do Quest4Couple\n\n' +
+              'Verifique o código e tente novamente.');
+      }
+    };
+    reader2.readAsText(partnerFileInput.files[0]);
+  };
+  reader1.readAsText(myFileInput.files[0]);
+}
+
+function compareAnswers() {
+  // Manter função antiga para compatibilidade
+  compareEncryptedAnswers();
+}
+
+function generateCompatibilityReport(user1, answers1, user2, answers2) {
+  const compatibility = analyzeCompatibility(answers1, answers2);
+  const reportDiv = document.getElementById('compatibilityReport');
+  
+  let html = `
+    <div class="compatibility-section super-match">
+      <h2>🔥 RELATÓRIO DE COMPATIBILIDADE</h2>
+      <h3>💕 ${user1} & ${user2}</h3>
+      <p><strong>Data:</strong> ${new Date().toLocaleDateString('pt-PT')}</p>
+    </div>
+  `;
+  
+  if (compatibility.superMatches.length > 0) {
+    html += `
+      <div class="compatibility-section super-match">
+        <h3>🌟 SUPER MATCHES - Ambos querem MUITO! (${compatibility.superMatches.length})</h3>
+        <ul>
+          ${compatibility.superMatches.map(item => `<li><strong>${item}</strong></li>`).join('')}
+        </ul>
+      </div>
+    `;
+  }
+  
+  if (compatibility.matches.length > 0) {
+    html += `
+      <div class="compatibility-section match">
+        <h3>✅ MATCHES - Compatíveis para experimentar (${compatibility.matches.length})</h3>
+        <ul>
+          ${compatibility.matches.map(item => `<li>${item}</li>`).join('')}
+        </ul>
+      </div>
+    `;
+  }
+  
+  if (compatibility.special.length > 0) {
+    html += `
+      <div class="compatibility-section special">
+        <h3>💝 ESPECIAIS - Um quer MUITO (aparecem sempre) (${compatibility.special.length})</h3>
+        <ul>
+          ${compatibility.special.map(item => `<li><em>${item}</em></li>`).join('')}
+        </ul>
+      </div>
+    `;
+  }
+  
+  if (compatibility.maybes.length > 0) {
+    html += `
+      <div class="compatibility-section maybe">
+        <h3>🤔 PARA CONSIDERAR - Ambos em dúvida (${compatibility.maybes.length})</h3>
+        <ul>
+          ${compatibility.maybes.map(item => `<li>${item}</li>`).join('')}
+        </ul>
+      </div>
+    `;
+  }
+  
+  html += `
+    <div class="compatibility-section">
+      <h3>📊 ESTATÍSTICAS</h3>
+      <p><strong>Total de respostas comparadas:</strong> ${compatibility.total}</p>
+      <p><strong>Nível de compatibilidade:</strong> ${Math.round(compatibility.compatibilityScore)}%</p>
+    </div>
+  `;
+  
+  reportDiv.innerHTML = html;
+  reportDiv.style.display = 'block';
+  reportDiv.scrollIntoView({ behavior: 'smooth' });
+}
+
+function analyzeCompatibility(answers1, answers2) {
+  const superMatches = [];
+  const matches = [];
+  const special = [];
+  const maybes = [];
+  let total = 0;
+  let compatible = 0;
+  
+  for (const question in answers1) {
+    if (answers2[question]) {
+      total++;
+      const resp1 = parseInt(answers1[question].response);
+      const resp2 = parseInt(answers2[question].response);
+      
+      // Super matches: ambos com 4 ou 5
+      if (resp1 >= 4 && resp2 >= 4) {
+        superMatches.push(question);
+        compatible += 2;
+      }
+      // Matches: ambos com 3+ ou diferença <= 1 com pelo menos um 3+
+      else if ((resp1 >= 3 && resp2 >= 3) || (Math.abs(resp1 - resp2) <= 1 && (resp1 >= 3 || resp2 >= 3))) {
+        matches.push(question);
+        compatible += 1.5;
+      }
+      // Special: um tem 4+ e outro 1-2
+      else if ((resp1 >= 4 && resp2 <= 2) || (resp2 >= 4 && resp1 <= 2)) {
+        special.push(question);
+        compatible += 1;
+      }
+      // Maybes: ambos com 2-3 ou diferença pequena
+      else if ((resp1 >= 2 && resp2 >= 2) || Math.abs(resp1 - resp2) <= 2) {
+        maybes.push(question);
+        compatible += 0.5;
+      }
+    }
+  }
+  
+  const compatibilityScore = total > 0 ? (compatible / (total * 2)) * 100 : 0;
+  
+  return {
+    superMatches,
+    matches,
+    special,
+    maybes,
+    total,
+    compatibilityScore
+  };
+}
+
+// Iniciar todos os packs minimizados ao carregar a página
+window.addEventListener('load', function() {
+  const allContents = document.querySelectorAll('.pack-content');
+  const allHeaders = document.querySelectorAll('.pack-header');
+  
+  allContents.forEach(content => {
+    content.classList.add('collapsed');
+  });
+  
+  allHeaders.forEach(header => {
+    header.classList.add('collapsed');
+  });
+});
+</script>
+
+</body>
+</html>
