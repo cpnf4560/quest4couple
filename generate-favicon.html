@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gerador de Favicon - Quest4Couple</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; max-width: 800px; margin: 0 auto; }
+        .preview { display: flex; align-items: center; margin: 10px 0; }
+        .preview img { margin-right: 10px; border: 1px solid #ccc; }
+        .btn { background: #d63384; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin: 5px; }
+        .btn:hover { background: #b02a5b; }
+    </style>
+</head>
+<body>
+    <h2>🎨 Gerador de Favicon Quest4Couple</h2>
+    <p>Este ficheiro gera favicons baseados no logo do Quest4Couple</p>
+    <button class="btn" onclick="generateAll()">🚀 Gerar Todos os Favicons</button>
+    
+    <!-- Canvas ocultos para gerar as imagens -->
+    <canvas id="canvas16" width="16" height="16" style="display:none;"></canvas>
+    <canvas id="canvas32" width="32" height="32" style="display:none;"></canvas>
+    <canvas id="canvas192" width="192" height="192" style="display:none;"></canvas>
+    
+    <!-- Links para download -->
+    <div id="downloads" style="margin-top: 20px;"></div>
+    
+    <script>
+    function drawFavicon(canvas, size) {
+        const ctx = canvas.getContext('2d');
+        const center = size / 2;
+        
+        // Limpar canvas
+        ctx.clearRect(0, 0, size, size);
+        
+        // Fundo circular com gradiente
+        const gradient = ctx.createRadialGradient(center, center * 0.7, 0, center, center, center);
+        gradient.addColorStop(0, '#d63384');
+        gradient.addColorStop(0.5, '#6f42c1');
+        gradient.addColorStop(1, '#26c6da');
+        
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(center, center, center - 1, 0, 2 * Math.PI);
+        ctx.fill();
+        
+        // Borda branca
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth = size > 32 ? 2 : 1;
+        ctx.stroke();
+        
+        // Coração
+        ctx.fillStyle = '#ffffff';
+        const heartSize = size * 0.4;
+        const heartX = center;
+        const heartY = center + size * 0.1;
+        
+        ctx.beginPath();
+        // Desenhar coração simplificado
+        const h = heartSize;
+        const w = h * 0.8;
+        ctx.moveTo(heartX, heartY + h * 0.3);
+        
+        // Lado esquerdo
+        ctx.bezierCurveTo(heartX - w/2, heartY - h/3, heartX - w, heartY + h/6, heartX, heartY + h/2);
+        // Lado direito
+        ctx.bezierCurveTo(heartX + w, heartY + h/6, heartX + w/2, heartY - h/3, heartX, heartY + h * 0.3);
+        
+        ctx.fill();
+        
+        // Texto Q4C (apenas para tamanhos maiores)
+        if (size >= 32) {
+            ctx.fillStyle = '#ffffff';
+            ctx.font = `bold ${Math.floor(size * 0.15)}px Arial`;
+            ctx.textAlign = 'center';
+            ctx.fillText('Q4C', center, center - heartSize/2);
+        }
+        
+        return canvas.toDataURL('image/png');
+    }
+      function generateAll() {
+        const downloads = document.getElementById('downloads');
+        downloads.innerHTML = '<h3>📥 Favicons Gerados:</h3>';
+        
+        const sizes = [16, 32, 192];
+        
+        sizes.forEach(size => {
+            const canvas = document.createElement('canvas');
+            canvas.width = size;
+            canvas.height = size;
+            
+            const dataUrl = drawFavicon(canvas, size);
+            
+            // Preview
+            const preview = document.createElement('div');
+            preview.className = 'preview';
+            
+            const img = document.createElement('img');
+            img.src = dataUrl;
+            img.style.width = '32px';
+            img.style.height = '32px';
+            
+            const link = document.createElement('a');
+            link.href = dataUrl;
+            link.download = `favicon-${size}x${size}.png`;
+            link.textContent = `favicon-${size}x${size}.png`;
+            link.className = 'btn';
+            link.style.textDecoration = 'none';
+            
+            preview.appendChild(img);
+            preview.appendChild(link);
+            downloads.appendChild(preview);
+        });
+        
+        // Instruções
+        const instructions = document.createElement('div');
+        instructions.innerHTML = `
+            <h3>📋 Instruções:</h3>
+            <ol>
+                <li><strong>Clique nos links acima</strong> para descarregar cada favicon</li>
+                <li><strong>Coloque os ficheiros</strong> na pasta do projeto Quest4Couple</li>
+                <li><strong>Os HTML já estão configurados</strong> para usar os favicons!</li>
+                <li><strong>Para ICO:</strong> Use <a href="https://favicon.io/favicon-converter/" target="_blank" style="color: #d63384;">favicon.io</a> para converter o PNG 16x16</li>
+            </ol>
+            <p><strong>✅ Tudo pronto!</strong> O vosso Quest4Couple terá favicons personalizados em todos os dispositivos.</p>
+        `;
+        instructions.style.marginTop = '20px';
+        instructions.style.padding = '15px';
+        instructions.style.backgroundColor = '#f0f8ff';
+        instructions.style.borderRadius = '8px';
+        instructions.style.border = '2px solid #d63384';
+        downloads.appendChild(instructions);
+    }
+    </script>
+</body>
+</html>
